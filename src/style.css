@@ -1,8 +1,17 @@
+:root {
+  --border: solid 2px black;
+}
+
+body {
+  background-color: aquamarine;
+}
+
 #canvas {
   border: solid 3px black;
+  background-color: white;
   display: block;
   margin: 0 auto;
-  cursor: url(/src/Brush-icon.png), auto;
+  cursor: url(Brush-icon.png), auto;
 }
 
 .properties {
@@ -15,9 +24,10 @@
   color: white;
   font-weight: 500;
   cursor: pointer;
-  border: solid 2px black;
+  border: var(--border);
   margin-right: 15px;
 }
+
 .colorBtns {
   display: flex;
   padding-top: 7px;
@@ -26,33 +36,41 @@
   width: 20px;
   height: 20px;
   margin-right: 15px;
-  border: solid 2px black;
   cursor: pointer;
 }
 .whiteBrush {
   background-color: white;
+  border: var(--border);
 }
 .blackBrush {
   background-color: black;
+  border: solid 2px white;
 }
 .redBrush {
   background-color: red;
+  border: var(--border);
 }
 .blueBrush {
   background-color: blue;
+  border: var(--border);
 }
 .greenBrush {
   background-color: green;
+  border: var(--border);
 }
 .yellowBrush {
   background-color: yellow;
+  border: var(--border);
 }
 .orangeBrush {
   background-color: orange;
+  border: var(--border);
 }
 .pinkBrush {
   background-color: #ff339a;
+  border: var(--border);
 }
 .purpleBrush {
   background-color: #a020f0;
+  border: var(--border);
 }

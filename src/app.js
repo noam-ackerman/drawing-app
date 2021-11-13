@@ -39,8 +39,9 @@ function settingCanvasSize() {
 }
 
 // btns selectors
-let colorBtns = document.querySelectorAll(".colorBtns");
+let colorBtns = document.querySelectorAll(".colorBtns button");
 let clearBtn = document.querySelector(".clearCanvas");
+let blackBrushBtn = document.querySelector(".blackBrush");
 
 //events
 colorBtns.forEach((btn) => {
@@ -62,8 +63,15 @@ colorBtns.forEach((btn) => {
     } else if (e.target.className === "pinkBrush") {
       ctx.strokeStyle = "#ff339a";
     } else if (e.target.className === "purpleBrush") {
-      ctx.strokeStyle = "#ff339a";
+      ctx.strokeStyle = "#a020f0";
     }
+    colorBtns.forEach((singleBtn) => {
+      if (singleBtn === e.target) {
+        singleBtn.style.borderColor = "white";
+      } else {
+        singleBtn.style.borderColor = "black";
+      }
+    });
   });
 });
 
@@ -71,4 +79,4 @@ clearBtn.addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
-// window.addEventListener("resize", settingCanvasSize);
+//window.addEventListener("resize", settingCanvasSize);
