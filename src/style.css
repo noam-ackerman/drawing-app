@@ -30,8 +30,7 @@ body {
   font-weight: 500;
   cursor: pointer;
   border: solid 2px white;
-  margin-right: 15px;
-  margin-top: 3px;
+  margin: 3px 7px 0 7px;
 }
 
 .download-drawing {
@@ -46,7 +45,7 @@ body {
 .colorBtns button {
   width: 20px;
   height: 20px;
-  margin-right: 15px;
+  margin: 0 7px;
   cursor: pointer;
 }
 .whiteBrush {
@@ -87,8 +86,7 @@ body {
 }
 
 input {
-  margin-right: 15px;
-  margin-top: 5px;
+  margin: 5px 7px 0 7px;
   cursor: pointer;
 }
 
@@ -100,11 +98,6 @@ input[type="color" i] {
   margin-top: 10px;
 }
 
-label {
-  margin-top: 7px;
-  font-weight: 600;
-  margin-right: 3px;
-}
 .color-picker {
   margin-left: 5px;
 }
@@ -122,6 +115,18 @@ label {
   .undoBtn,
   .downloadBtn,
   .colorBtns {
-    margin-bottom: 7px;
+    margin-bottom: 3px;
+  }
+  .colorBtns button {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+  }
+  input[type="color" i] {
+    width: 40px;
+    height: 20px;
+  }
+  .properties {
+    padding: 3px 15px 10px 15px;
   }
 }
