@@ -26,11 +26,14 @@ window.addEventListener("load", () => {
     draw(e);
   }
 
-  function end() {
+  function end(e) {
     painting = false;
     ctx.closePath();
-    restoreArray.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-    index += 1;
+    if (e.type !== "mouseout") {
+      restoreArray.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+      index += 1;
+      console.log(restoreArray);
+    }
   }
 
   function draw(e) {
