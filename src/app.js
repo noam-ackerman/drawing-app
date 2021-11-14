@@ -6,8 +6,8 @@ window.addEventListener("load", () => {
   let index = -1;
 
   function settingCanvasSize(e) {
-    canvas.height = window.innerHeight - 85;
     canvas.width = window.innerWidth - 30;
+    canvas.height = window.innerHeight - 120;
   }
   //defining canvas size
   settingCanvasSize();

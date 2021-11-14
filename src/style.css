@@ -15,10 +15,11 @@ body {
 }
 
 .properties {
-  padding: 13px 40px 10px 40px;
+  padding: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 .clearCanvas,
 .undoBtn {
@@ -95,4 +96,11 @@ label {
 }
 .color-picker {
   margin-left: 5px;
+}
+
+@media (max-width: 1024px) {
+  .clearCanvas,
+  .undoBtn {
+    font-size: 12px;
+  }
 }
