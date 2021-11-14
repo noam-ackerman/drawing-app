@@ -6,7 +6,7 @@ window.addEventListener("load", () => {
   let index = -1;
 
   function settingCanvasSize(e) {
-    canvas.width = window.innerWidth - 50;
+    canvas.width = window.innerWidth - 60;
     if (canvas.width < 650) {
       canvas.height = window.innerHeight - 150;
     } else if (canvas.width < 900 && canvas.width > 650) {
