@@ -2,6 +2,8 @@ window.addEventListener("load", () => {
   let canvas = document.querySelector("#canvas");
   let ctx = canvas.getContext("2d");
   let brushWidth = 10;
+  let restoreArray = [];
+  let index = -1;
 
   function settingCanvasSize(e) {
     canvas.height = window.innerHeight - 85;
@@ -14,12 +16,15 @@ window.addEventListener("load", () => {
 
   function start(e) {
     painting = true;
+    ctx.beginPath();
     draw(e);
   }
 
   function end() {
     painting = false;
-    ctx.beginPath();
+    ctx.closePath();
+    restoreArray.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+    index += 1;
   }
 
   function draw(e) {
@@ -40,6 +45,7 @@ window.addEventListener("load", () => {
   //brush properties selectors
   let colorBtns = document.querySelectorAll(".colorBtns button");
   let clearBtn = document.querySelector(".clearCanvas");
+  let undoBtn = document.querySelector(".undoBtn");
   let colorPicker = document.querySelector(".color-picker");
   let brushWidthPicker = document.querySelector(".brush-width-range");
 
@@ -81,12 +87,27 @@ window.addEventListener("load", () => {
   });
 
   //clear drawing
-  clearBtn.addEventListener("click", () => {
+  function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    restoreArray = [];
+    index = -1;
+  }
+  clearBtn.addEventListener("click", clearCanvas);
+
+  //undo
+  undoBtn.addEventListener("click", () => {
+    if (index <= 0) {
+      clearCanvas();
+    } else {
+      index -= 1;
+      restoreArray.pop();
+      ctx.putImageData(restoreArray[index], 0, 0);
+    }
   });
 
   /*window.addEventListener("resize", () => {
     canvas.height = window.innerHeight - 85;
     canvas.width = window.innerWidth - 30;
+    ctx.putImageData(restoreArray[index], 0, 0);
   });*/
 });

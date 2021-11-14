@@ -20,7 +20,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-.clearCanvas {
+.clearCanvas,
+.undoBtn {
   padding: 7px;
   background-color: black;
   color: white;
@@ -81,6 +82,7 @@ body {
 input {
   margin-right: 15px;
   margin-top: 5px;
+  cursor: pointer;
 }
 .brush-width-range {
   margin-top: 10px;
