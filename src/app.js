@@ -40,20 +40,28 @@ window.addEventListener("load", () => {
     if (!painting) return;
     ctx.lineWidth = brushWidth;
     ctx.lineCap = "round";
-    ctx.lineTo(e.clientX, e.clientY);
+    if (e.type === "mousemove" || e.type === "mousedown") {
+      ctx.lineTo(e.clientX, e.clientY);
+    } else if (e.type === "touchmove" || e.type === "touchstart") {
+      ctx.lineTo(e.touches[0].pageX, e.touches[0].pageY);
+    }
     ctx.stroke();
     ctx.beginPath();
-    ctx.moveTo(e.clientX, e.clientY);
+    if (e.type === "mousemove" || e.type === "mousedown") {
+      ctx.moveTo(e.clientX, e.clientY);
+    } else if (e.type === "touchmove" || e.type === "touchstart") {
+      ctx.moveTo(e.touches[0].pageX, e.touches[0].pageY);
+    }
     ctx.closePath();
   }
   //mouse events
-  canvas.addEventListener("mousedown", start);
-  canvas.addEventListener("touchstart", start);
-  canvas.addEventListener("mouseup", end);
-  canvas.addEventListener("mouseout", end);
-  canvas.addEventListener("touchend", end);
-  canvas.addEventListener("mousemove", draw);
-  canvas.addEventListener("touchmove", draw);
+  canvas.addEventListener("mousedown", start, false);
+  canvas.addEventListener("touchstart", start, false);
+  canvas.addEventListener("mouseup", end, false);
+  canvas.addEventListener("mouseout", end, false);
+  canvas.addEventListener("touchend", end, false);
+  canvas.addEventListener("mousemove", draw, false);
+  canvas.addEventListener("touchmove", draw, false);
 
   //brush properties selectors
   let colorBtns = document.querySelectorAll(".colorBtns button");
