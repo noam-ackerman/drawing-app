@@ -17,6 +17,8 @@ body {
 .properties {
   padding: 13px 40px 10px 40px;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .clearCanvas {
   padding: 7px;
@@ -30,7 +32,7 @@ body {
 
 .colorBtns {
   display: flex;
-  padding-top: 7px;
+  padding-top: 8px;
 }
 .colorBtns button {
   width: 20px;
@@ -73,4 +75,13 @@ body {
 .purpleBrush {
   background-color: #a020f0;
   border: var(--border);
+}
+
+input {
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.color-picker {
+  margin-left: 5px;
 }

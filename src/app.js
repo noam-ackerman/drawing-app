@@ -1,10 +1,15 @@
-let canvas = document.querySelector("#canvas");
-let ctx = canvas.getContext("2d");
-
 window.addEventListener("load", () => {
+  let canvas = document.querySelector("#canvas");
+  let ctx = canvas.getContext("2d");
+  let brushWidth = 10;
+
+  function settingCanvasSize(e) {
+    canvas.height = window.innerHeight - 85;
+    canvas.width = window.innerWidth - 30;
+  }
   //defining canvas size
   settingCanvasSize();
-  //vars
+
   let painting = false;
 
   function start(e) {
@@ -19,7 +24,7 @@ window.addEventListener("load", () => {
 
   function draw(e) {
     if (!painting) return;
-    ctx.lineWidth = 5;
+    ctx.lineWidth = brushWidth;
     ctx.lineCap = "round";
     ctx.lineTo(e.clientX, e.clientY);
     ctx.stroke();
@@ -27,56 +32,61 @@ window.addEventListener("load", () => {
     ctx.moveTo(e.clientX, e.clientY);
     ctx.closePath();
   }
-  //events
+  //mouse events
   canvas.addEventListener("mousedown", start);
   canvas.addEventListener("mouseup", end);
   canvas.addEventListener("mousemove", draw);
-});
 
-function settingCanvasSize() {
-  canvas.height = window.innerHeight - 85;
-  canvas.width = window.innerWidth - 30;
-}
+  //brush properties selectors
+  let colorBtns = document.querySelectorAll(".colorBtns button");
+  let clearBtn = document.querySelector(".clearCanvas");
+  let colorPicker = document.querySelector(".color-picker");
+  let brushWidthPicker = document.querySelector(".brush-width-range");
 
-// btns selectors
-let colorBtns = document.querySelectorAll(".colorBtns button");
-let clearBtn = document.querySelector(".clearCanvas");
-let blackBrushBtn = document.querySelector(".blackBrush");
+  //brush events
+  //brush width pick
+  brushWidthPicker.addEventListener("input", (e) => {
+    brushWidth = brushWidthPicker.value;
+  });
+  //brush color pick
+  colorPicker.addEventListener("input", (e) => {
+    ctx.strokeStyle = colorPicker.value;
+  });
 
-//events
-colorBtns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    if (e.target.className === "whiteBrush") {
-      ctx.strokeStyle = "white";
-    } else if (e.target.className === "blackBrush") {
-      ctx.strokeStyle = "black";
-    } else if (e.target.className === "redBrush") {
-      ctx.strokeStyle = "red";
-    } else if (e.target.className === "blueBrush") {
-      ctx.strokeStyle = "blue";
-    } else if (e.target.className === "greenBrush") {
-      ctx.strokeStyle = "green";
-    } else if (e.target.className === "yellowBrush") {
-      ctx.strokeStyle = "yellow";
-    } else if (e.target.className === "orangeBrush") {
-      ctx.strokeStyle = "orange";
-    } else if (e.target.className === "pinkBrush") {
-      ctx.strokeStyle = "#ff339a";
-    } else if (e.target.className === "purpleBrush") {
-      ctx.strokeStyle = "#a020f0";
-    }
-    colorBtns.forEach((singleBtn) => {
-      if (singleBtn === e.target) {
-        singleBtn.style.borderColor = "white";
-      } else {
-        singleBtn.style.borderColor = "black";
+  colorBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      let pickedColor = window.getComputedStyle(btn).backgroundColor;
+      ctx.strokeStyle = pickedColor;
+      function rgbToHex(rgb) {
+        let sep = rgb.indexOf(",") > -1 ? "," : " ";
+        rgb = rgb.substr(4).split(")")[0].split(sep);
+        let r = (+rgb[0]).toString(16),
+          g = (+rgb[1]).toString(16),
+          b = (+rgb[2]).toString(16);
+        if (r.length == 1) r = "0" + r;
+        if (g.length == 1) g = "0" + g;
+        if (b.length == 1) b = "0" + b;
+        return "#" + r + g + b;
       }
+      colorPicker.value = rgbToHex(pickedColor);
+      //changing border color of picked color
+      colorBtns.forEach((singleBtn) => {
+        if (singleBtn === e.target) {
+          singleBtn.style.borderColor = "white";
+        } else {
+          singleBtn.style.borderColor = "black";
+        }
+      });
     });
   });
-});
 
-clearBtn.addEventListener("click", () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-});
+  //clear drawing
+  clearBtn.addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
 
-//window.addEventListener("resize", settingCanvasSize);
+  window.addEventListener("resize", () => {
+    canvas.height = window.innerHeight - 85;
+    canvas.width = window.innerWidth - 30;
+  });
+});
