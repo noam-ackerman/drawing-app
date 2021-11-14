@@ -85,8 +85,8 @@ window.addEventListener("load", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
 
-  window.addEventListener("resize", () => {
+  /*window.addEventListener("resize", () => {
     canvas.height = window.innerHeight - 85;
     canvas.width = window.innerWidth - 30;
-  });
+  });*/
 });
