@@ -45,8 +45,12 @@ window.addEventListener("load", () => {
   }
   //mouse events
   canvas.addEventListener("mousedown", start);
+  canvas.addEventListener("touchstart", start);
   canvas.addEventListener("mouseup", end);
+  canvas.addEventListener("mouseout", end);
+  canvas.addEventListener("touchend", end);
   canvas.addEventListener("mousemove", draw);
+  canvas.addEventListener("touchmove", draw);
 
   //brush properties selectors
   let colorBtns = document.querySelectorAll(".colorBtns button");
