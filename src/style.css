@@ -28,11 +28,12 @@ body {
   cursor: pointer;
   border: var(--border);
   margin-right: 15px;
+  margin-top: 3px;
 }
 
 .colorBtns {
   display: flex;
-  padding-top: 8px;
+  padding-top: 5px;
 }
 .colorBtns button {
   width: 20px;
@@ -81,7 +82,15 @@ input {
   margin-right: 15px;
   margin-top: 5px;
 }
+.brush-width-range {
+  margin-top: 10px;
+}
 
+label {
+  margin-top: 7px;
+  font-weight: 600;
+  margin-right: 3px;
+}
 .color-picker {
   margin-left: 5px;
 }
