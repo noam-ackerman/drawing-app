@@ -6,8 +6,14 @@ window.addEventListener("load", () => {
   let index = -1;
 
   function settingCanvasSize(e) {
-    canvas.width = window.innerWidth - 30;
-    canvas.height = window.innerHeight - 120;
+    canvas.width = window.innerWidth - 50;
+    if (canvas.width < 650) {
+      canvas.height = window.innerHeight - 150;
+    } else if (canvas.width < 900 && canvas.width > 650) {
+      canvas.height = window.innerHeight - 130;
+    } else {
+      canvas.height = window.innerHeight - 100;
+    }
   }
   //defining canvas size
   settingCanvasSize();
@@ -48,7 +54,7 @@ window.addEventListener("load", () => {
   let undoBtn = document.querySelector(".undoBtn");
   let colorPicker = document.querySelector(".color-picker");
   let brushWidthPicker = document.querySelector(".brush-width-range");
-
+  let download = document.querySelector(".download-drawing");
   //brush events
   //brush width pick
   brushWidthPicker.addEventListener("input", (e) => {
@@ -103,6 +109,12 @@ window.addEventListener("load", () => {
       restoreArray.pop();
       ctx.putImageData(restoreArray[index], 0, 0);
     }
+  });
+
+  //download image
+  download.addEventListener("click", () => {
+    let image = canvas.toDataURL("image/png");
+    download.href = image;
   });
 
   /*window.addEventListener("resize", () => {

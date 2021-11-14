@@ -15,14 +15,15 @@ body {
 }
 
 .properties {
-  padding: 13px;
+  padding: 13px 15px 10px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 .clearCanvas,
-.undoBtn {
+.undoBtn,
+.downloadBtn {
   padding: 7px;
   background-color: black;
   color: white;
@@ -31,6 +32,11 @@ body {
   border: var(--border);
   margin-right: 15px;
   margin-top: 3px;
+}
+
+.download-drawing {
+  color: white;
+  text-decoration: none;
 }
 
 .colorBtns {
@@ -100,7 +106,17 @@ label {
 
 @media (max-width: 1024px) {
   .clearCanvas,
-  .undoBtn {
+  .undoBtn,
+  .downloadBtn {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 620px) {
+  .clearCanvas,
+  .undoBtn,
+  .downloadBtn,
+  .colorBtns {
+    margin-bottom: 7px;
   }
 }
