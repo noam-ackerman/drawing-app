@@ -20,21 +20,6 @@ window.addEventListener("load", () => {
 
   let painting = false;
 
-  function start(e) {
-    painting = true;
-    ctx.beginPath();
-    draw(e);
-  }
-
-  function end(e) {
-    ctx.closePath();
-    if (painting) {
-      restoreArray.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-      index += 1;
-      painting = false;
-    }
-  }
-
   function draw(e) {
     if (!painting) return;
     ctx.lineWidth = brushWidth;
@@ -53,6 +38,23 @@ window.addEventListener("load", () => {
     }
     ctx.closePath();
   }
+
+
+  function start(e) {
+    painting = true;
+    ctx.beginPath();
+    draw(e);
+  }
+
+  function end(e) {
+    ctx.closePath();
+    if (painting) {
+      restoreArray.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+      index += 1;
+      painting = false;
+    }
+  }
+  
   //mouse events
   canvas.addEventListener("mousedown", start, false);
   canvas.addEventListener("touchstart", start, false);
