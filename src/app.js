@@ -6,7 +6,7 @@ window.addEventListener("load", () => {
   let index = -1;
 
   function settingCanvasSize(e) {
-    canvas.width = window.innerWidth - 60;
+    canvas.width = window.innerWidth - 40;
     if (canvas.width < 650) {
       canvas.height = window.innerHeight - 150;
     } else if (canvas.width < 900 && canvas.width > 650) {
@@ -21,6 +21,7 @@ window.addEventListener("load", () => {
   let painting = false;
 
   function draw(e) {
+    e.preventDefault();
     if (!painting) return;
     ctx.lineWidth = brushWidth;
     ctx.lineCap = "round";
@@ -41,12 +42,14 @@ window.addEventListener("load", () => {
 
 
   function start(e) {
+    e.preventDefault();
     painting = true;
     ctx.beginPath();
     draw(e);
   }
 
   function end(e) {
+    e.preventDefault();
     ctx.closePath();
     if (painting) {
       restoreArray.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
@@ -63,6 +66,7 @@ window.addEventListener("load", () => {
   canvas.addEventListener("touchend", end, false);
   canvas.addEventListener("mousemove", draw, false);
   canvas.addEventListener("touchmove", draw, false);
+
 
   //brush properties selectors
   let colorBtns = document.querySelectorAll(".colorBtns button");

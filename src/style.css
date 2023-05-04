@@ -15,11 +15,12 @@ body {
 }
 
 .properties {
-  padding: 13px 15px 10px 15px;
+  padding: 15px 15px 10px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  gap:14px;
 }
 .clearCanvas,
 .undoBtn,
@@ -30,7 +31,6 @@ body {
   font-weight: 500;
   cursor: pointer;
   border: solid 2px white;
-  margin: 3px 7px 0 7px;
 }
 
 .download-drawing {
@@ -40,12 +40,12 @@ body {
 
 .colorBtns {
   display: flex;
-  padding-top: 5px;
+  gap:13px
 }
 .colorBtns button {
   width: 20px;
   height: 20px;
-  margin: 0 7px;
+  margin: 0;
   cursor: pointer;
 }
 .whiteBrush {
@@ -86,21 +86,25 @@ body {
 }
 
 input {
-  margin: 5px 7px 0 7px;
   cursor: pointer;
 }
 
 input[type="color" i] {
   width: 40px;
   height: 33px;
-}
-.brush-width-range {
-  margin-top: 10px;
+  margin: 0;
+  background-color: rgb(239,239,239);
+  color:#000;
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(118,118,118);
+  border-image: initial;
+  padding: 1px 2px;
 }
 
-.color-picker {
-  margin-left: 5px;
-}
+
+
 
 @media (max-width: 1024px) {
   .clearCanvas,
@@ -111,22 +115,16 @@ input[type="color" i] {
 }
 
 @media (max-width: 620px) {
-  .clearCanvas,
-  .undoBtn,
-  .downloadBtn,
-  .colorBtns {
-    margin-bottom: 3px;
-  }
+
   .colorBtns button {
-    width: 15px;
-    height: 15px;
-    margin: 0 5px;
+    width: 17px;
+    height: 17px;
   }
   input[type="color" i] {
-    width: 40px;
-    height: 20px;
+    width: 37px;
+    height: 30px;
   }
   .properties {
-    padding: 3px 15px 10px 15px;
+    padding: 13px 15px 10px 15px;
   }
 }
