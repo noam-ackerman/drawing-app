@@ -40,7 +40,8 @@ body {
 
 .colorBtns {
   display: flex;
-  gap:13px
+  gap:13px;
+  margin:5px 0;
 }
 .colorBtns button {
   width: 20px;
@@ -93,20 +94,12 @@ input[type="color" i] {
   width: 40px;
   height: 33px;
   margin: 0;
-  background-color: rgb(239,239,239);
-  color:#000;
-  border-radius: 2px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(118,118,118);
-  border-image: initial;
-  padding: 1px 2px;
 }
 
 
 
 
-@media (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   .clearCanvas,
   .undoBtn,
   .downloadBtn {
@@ -114,15 +107,15 @@ input[type="color" i] {
   }
 }
 
-@media (max-width: 620px) {
+@media only screen and (max-width: 620px) {
 
   .colorBtns button {
     width: 17px;
     height: 17px;
   }
   input[type="color" i] {
-    width: 37px;
-    height: 30px;
+    width: 32px;
+    height: 25px;
   }
   .properties {
     padding: 13px 15px 10px 15px;
