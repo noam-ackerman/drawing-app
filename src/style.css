@@ -20,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap:14px;
+  gap:12px;
 }
 .clearCanvas,
 .undoBtn,
